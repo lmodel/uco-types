@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.15">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.113286f1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7bf56d0a.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -77,7 +77,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="uco-types" class="md-header__button md-logo" aria-label="uco-types" data-md-component="logo">
       
@@ -257,6 +259,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    Inheritance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mixin-usage" class="md-nav__link">
+    Mixin Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -318,11 +334,36 @@
 <h1 id="slot-threadpreviousitem">Slot: threadPreviousItem</h1>
 <p><em>"A direct link to a previous item in a thread."</em></p>
 <p>URI: <a href="https://w3id.org/lmodel/uco-types/threadPreviousItem">uco_types:threadPreviousItem</a></p>
-<!-- no inheritance hierarchy -->
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../threadPredecessor/">threadPredecessor</a><ul>
+<li><strong>threadPreviousItem</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="mixin-usage">Mixin Usage</h2>
+<table>
+<thead>
+<tr>
+<th>mixed into</th>
+<th>description</th>
+<th>range</th>
+<th>domain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../ThreadItem/">ThreadItem</a></li>
+<li>Mixin: True</li>
 </ul>
 <h2 id="see-also">See Also</h2>
 <ul>
@@ -342,6 +383,9 @@ from_schema: https://w3id.org/lmodel/uco-types
 see_also:
 - co:previousItem
 rank: 1000
+is_a: threadPredecessor
+mixin: true
+domain: ThreadItem
 alias: threadPreviousItem
 subproperty_of: threadPredecessor
 inverse: threadNextItem
@@ -392,7 +436,7 @@ range: ThreadItem
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      <script src="../assets/javascripts/bundle.fc8c2696.min.js"></script>
       
     
   </body>
