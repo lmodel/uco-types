@@ -213,8 +213,8 @@
     class ListItem
       CoItem &lt;|-- ListItem
 
-      ListItem : index
-        ListItem &lt;.. positive integer : index
+      ListItem : _index
+        ListItem &lt;.. positive integer : _index
       ListItem : itemOf
         ListItem &lt;.. Bag : itemOf
 
@@ -241,7 +241,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../">index</a></td>
+<td><a href="../_index/">_index</a></td>
 <td>0..1 <br/> <a href="../PositiveInteger/">PositiveInteger</a></td>
 <td>A number identifying the position, starting from 1, of a particular list item...</td>
 <td>direct</td>
@@ -285,7 +285,7 @@
 </tr>
 <tr>
 <td><a href="./">ListItem</a></td>
-<td><a href="../">index</a></td>
+<td><a href="../_index/">_index</a></td>
 <td>domain</td>
 <td><a href="./">ListItem</a></td>
 </tr>
@@ -338,16 +338,15 @@ exact_mappings:
 rank: 1000
 is_a: CoItem
 slots:
-- index
+- _index
 slot_usage:
-  index:
-    name: index
-    domain_of:
-    - ListItem
-    - ListItem
-    required: true
-    minimum_cardinality: 1
-    maximum_cardinality: 1
+  name: _index
+  domain_of:
+  - ListItem
+  - ListItem
+  required: true
+  minimum_cardinality: 1
+  maximum_cardinality: 1
 
 </code></pre>
 </details>
@@ -364,23 +363,22 @@ exact_mappings:
 rank: 1000
 is_a: CoItem
 slot_usage:
-  index:
-    name: index
-    domain_of:
-    - ListItem
-    - ListItem
-    required: true
-    minimum_cardinality: 1
-    maximum_cardinality: 1
+  name: _index
+  domain_of:
+  - ListItem
+  - ListItem
+  required: true
+  minimum_cardinality: 1
+  maximum_cardinality: 1
 attributes:
-  index:
-    name: index
+  _index:
+    name: _index
     description: A number identifying the position, starting from 1, of a particular
       list item within a list.
     from_schema: https://w3id.org/lmodel/uco-types
     rank: 1000
     domain: ListItem
-    alias: index
+    alias: _index
     owner: ListItem
     domain_of:
     - ListItem
