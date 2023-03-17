@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/uco-types/ControlledVocabulary/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.3" name="generator"/>
 <title>Class: ControlledVocabulary - uco-types</title>
-<link href="../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.c4a75a56.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -198,37 +198,63 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-controlledvocabulary">Class: ControlledVocabulary</h1>
 <p><em>A controlled vocabulary is an explicitly constrained set of string values.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/uco-types/ControlledVocabulary">types:ControlledVocabulary</a></p>
+<p>URI: <a href="core:ControlledVocabulary">core:ControlledVocabulary</a></p>
 <div class="mermaid"> classDiagram
     class ControlledVocabulary
       UcoObject &lt;|-- ControlledVocabulary
 
       ControlledVocabulary : constrainingVocabularyName
-        ControlledVocabulary &lt;.. string : constrainingVocabularyName
+
+          ControlledVocabulary ..&gt; string : constrainingVocabularyName
+
       ControlledVocabulary : constrainingVocabularyReference
-        ControlledVocabulary &lt;.. iri type : constrainingVocabularyReference
+
+          ControlledVocabulary ..&gt; iri type : constrainingVocabularyReference
+
       ControlledVocabulary : createdBy
-        ControlledVocabulary &lt;.. string : createdBy
+
+          ControlledVocabulary ..&gt; string : createdBy
+
       ControlledVocabulary : description
-        ControlledVocabulary &lt;.. string : description
+
+          ControlledVocabulary ..&gt; string : description
+
       ControlledVocabulary : externalReference
-        ControlledVocabulary &lt;.. string : externalReference
+
+          ControlledVocabulary ..&gt; string : externalReference
+
       ControlledVocabulary : hasFacet
-        ControlledVocabulary &lt;.. string : hasFacet
+
+          ControlledVocabulary ..&gt; string : hasFacet
+
       ControlledVocabulary : modifiedTime
-        ControlledVocabulary &lt;.. datetime : modifiedTime
+
+          ControlledVocabulary ..&gt; datetime : modifiedTime
+
       ControlledVocabulary : name
-        ControlledVocabulary &lt;.. string : name
+
+          ControlledVocabulary ..&gt; string : name
+
       ControlledVocabulary : objectCreatedTime
-        ControlledVocabulary &lt;.. datetime : objectCreatedTime
+
+          ControlledVocabulary ..&gt; datetime : objectCreatedTime
+
       ControlledVocabulary : objectMarking
-        ControlledVocabulary &lt;.. MarkingDefinitionAbstraction : objectMarking
+
+          ControlledVocabulary ..&gt; MarkingDefinitionAbstraction : objectMarking
+
       ControlledVocabulary : specVersion
-        ControlledVocabulary &lt;.. string : specVersion
+
+          ControlledVocabulary ..&gt; string : specVersion
+
       ControlledVocabulary : tag
-        ControlledVocabulary &lt;.. string : tag
+
+          ControlledVocabulary ..&gt; string : tag
+
       ControlledVocabulary : value
-        ControlledVocabulary &lt;.. string : value
+
+          ControlledVocabulary ..&gt; string : value
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -260,49 +286,49 @@
 </tr>
 <tr>
 <td><a href="../constrainingVocabularyName/">constrainingVocabularyName</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The name of an explicitly constrained set of string values</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>A string value</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../createdBy/">createdBy</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The identity that created a characterization of a concept</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>A description of a particular concept characterization</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../externalReference/">externalReference</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>Specifies a reference to a resource outside of the UCO</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../hasFacet/">hasFacet</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>Further sets of properties characterizing a concept based on the particular c...</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../modifiedTime/">modifiedTime</a></td>
-<td>0..* <br/> <a href="../Datetime/">Datetime</a></td>
+<td>0..* <br/> <a href="xsd:dateTime">xsd:dateTime</a></td>
 <td>Specifies the time that this particular version of the object was modified</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The name of a particular concept characterization</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
@@ -314,19 +340,19 @@
 </tr>
 <tr>
 <td><a href="../objectCreatedTime/">objectCreatedTime</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>0..1 <br/> <a href="xsd:dateTime">xsd:dateTime</a></td>
 <td>The time at which a characterization of a concept is created</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../specVersion/">specVersion</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The version of UCO ontology or subontology specification used to characterize...</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../tag/">tag</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>A generic tag/label</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
@@ -335,7 +361,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lmodel/uco-types</li>
+<li>from schema: https://w3id.org/lmodel/uco-core</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -348,11 +374,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>types:ControlledVocabulary</td>
+<td>core:ControlledVocabulary</td>
 </tr>
 <tr>
 <td>native</td>
-<td>types:ControlledVocabulary</td>
+<td>core:ControlledVocabulary</td>
 </tr>
 <tr>
 <td>exact</td>
@@ -366,11 +392,10 @@
 <details>
 <pre><code class="language-yaml">name: ControlledVocabulary
 description: A controlled vocabulary is an explicitly constrained set of string values.
-from_schema: https://w3id.org/lmodel/uco-types
+from_schema: https://w3id.org/lmodel/uco-core
 exact_mappings:
 - NCIT:C48697
 - wikidata:Q1469824
-rank: 1000
 is_a: UcoObject
 slots:
 - constrainingVocabularyReference
@@ -381,19 +406,15 @@ slot_usage:
     name: constrainingVocabularyReference
     domain_of:
     - ControlledVocabulary
-    - ControlledVocabulary
     maximum_cardinality: 1
   constrainingVocabularyName:
     name: constrainingVocabularyName
     domain_of:
     - ControlledVocabulary
-    - ControlledVocabulary
     maximum_cardinality: 1
   value:
     name: value
     domain_of:
-    - DictionaryEntry
-    - ControlledVocabulary
     - DictionaryEntry
     - ControlledVocabulary
     required: true
@@ -405,30 +426,25 @@ slot_usage:
 <details>
 <pre><code class="language-yaml">name: ControlledVocabulary
 description: A controlled vocabulary is an explicitly constrained set of string values.
-from_schema: https://w3id.org/lmodel/uco-types
+from_schema: https://w3id.org/lmodel/uco-core
 exact_mappings:
 - NCIT:C48697
 - wikidata:Q1469824
-rank: 1000
 is_a: UcoObject
 slot_usage:
   constrainingVocabularyReference:
     name: constrainingVocabularyReference
     domain_of:
     - ControlledVocabulary
-    - ControlledVocabulary
     maximum_cardinality: 1
   constrainingVocabularyName:
     name: constrainingVocabularyName
     domain_of:
     - ControlledVocabulary
-    - ControlledVocabulary
     maximum_cardinality: 1
   value:
     name: value
     domain_of:
-    - DictionaryEntry
-    - ControlledVocabulary
     - DictionaryEntry
     - ControlledVocabulary
     required: true
@@ -439,37 +455,30 @@ attributes:
     description: A reference to a specification for an explicitly constrained set
       of string values. The specification may be unstructured (e.g., web page listing
       string values) or structured (e.g. RDF/OWL enumeration).
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: constrainingVocabularyReference
     owner: ControlledVocabulary
     domain_of:
-    - ControlledVocabulary
     - ControlledVocabulary
     range: iri type
     maximum_cardinality: 1
   constrainingVocabularyName:
     name: constrainingVocabularyName
     description: The name of an explicitly constrained set of string values.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: constrainingVocabularyName
     owner: ControlledVocabulary
     domain_of:
-    - ControlledVocabulary
     - ControlledVocabulary
     range: string
     maximum_cardinality: 1
   value:
     name: value
     description: A string value.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: value
     owner: ControlledVocabulary
     domain_of:
-    - DictionaryEntry
-    - ControlledVocabulary
     - DictionaryEntry
     - ControlledVocabulary
     range: string
@@ -478,117 +487,33 @@ attributes:
   createdBy:
     name: createdBy
     description: The identity that created a characterization of a concept.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     domain: IdentityAbstraction
     alias: createdBy
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     maximum_cardinality: 0
   description:
     name: description
     description: A description of a particular concept characterization.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: description
     owner: ControlledVocabulary
     domain_of:
     - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     range: string
   externalReference:
     name: externalReference
     description: Specifies a reference to a resource outside of the UCO.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     domain: ExternalReference
     multivalued: true
     alias: externalReference
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     required: false
@@ -598,40 +523,12 @@ attributes:
     description: Further sets of properties characterizing a concept based on the
       particular context of the class and of the particular instance of the concept
       being characterized.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     domain: Facet
     multivalued: true
     alias: hasFacet
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
   modifiedTime:
@@ -643,76 +540,20 @@ attributes:
       property. Object creators MUST update the modified property when creating a
       new version of an object. The modified timestamp MUST be precise to the nearest
       millisecond (exactly three digits after the decimal place in seconds).
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: modifiedTime
     owner: ControlledVocabulary
     domain_of:
     - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     range: datetime
   name:
     name: name
     description: The name of a particular concept characterization.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: name
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     maximum_cardinality: 1
@@ -720,39 +561,11 @@ attributes:
     name: objectMarking
     description: Marking definitions to be applied to a particular concept characterization
       in its entirety.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: objectMarking
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: MarkingDefinitionAbstraction
   objectCreatedTime:
@@ -760,38 +573,10 @@ attributes:
     description: The time at which a characterization of a concept is created. This
       time pertains to the time of creating the record object, and is not an intrinsic
       characteristic of the concept.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: objectCreatedTime
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: datetime
     maximum_cardinality: 1
@@ -799,77 +584,21 @@ attributes:
     name: specVersion
     description: The version of UCO ontology or subontology specification used to
       characterize a concept.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: specVersion
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     maximum_cardinality: 1
   tag:
     name: tag
     description: A generic tag/label.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: tag
     owner: ControlledVocabulary
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
 
@@ -899,6 +628,6 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../assets/javascripts/bundle.efa0ade1.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

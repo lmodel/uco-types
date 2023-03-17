@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://lmodel.github.io/uco-types/IdentityAbstraction/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.4.2, mkdocs-material-9.1.2" name="generator"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.3" name="generator"/>
 <title>Class: IdentityAbstraction - uco-types</title>
-<link href="../assets/stylesheets/main.7bf56d0a.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.c4a75a56.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -203,31 +203,51 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-identityabstraction">Class: IdentityAbstraction</h1>
 <p><em>An identity abstraction is a grouping of identifying characteristics unique to an individual or organization. This class is an ontological structural abstraction for this concept. Implementations of this concept should utilize the identity:Identity class.</em></p>
-<p>URI: <a href="https://w3id.org/lmodel/uco-types/IdentityAbstraction">types:IdentityAbstraction</a></p>
+<p>URI: <a href="core:IdentityAbstraction">core:IdentityAbstraction</a></p>
 <div class="mermaid"> classDiagram
     class IdentityAbstraction
       UcoObject &lt;|-- IdentityAbstraction
 
       IdentityAbstraction : createdBy
-        IdentityAbstraction &lt;.. string : createdBy
+
+          IdentityAbstraction ..&gt; string : createdBy
+
       IdentityAbstraction : description
-        IdentityAbstraction &lt;.. string : description
+
+          IdentityAbstraction ..&gt; string : description
+
       IdentityAbstraction : externalReference
-        IdentityAbstraction &lt;.. string : externalReference
+
+          IdentityAbstraction ..&gt; string : externalReference
+
       IdentityAbstraction : hasFacet
-        IdentityAbstraction &lt;.. string : hasFacet
+
+          IdentityAbstraction ..&gt; string : hasFacet
+
       IdentityAbstraction : modifiedTime
-        IdentityAbstraction &lt;.. datetime : modifiedTime
+
+          IdentityAbstraction ..&gt; datetime : modifiedTime
+
       IdentityAbstraction : name
-        IdentityAbstraction &lt;.. string : name
+
+          IdentityAbstraction ..&gt; string : name
+
       IdentityAbstraction : objectCreatedTime
-        IdentityAbstraction &lt;.. datetime : objectCreatedTime
+
+          IdentityAbstraction ..&gt; datetime : objectCreatedTime
+
       IdentityAbstraction : objectMarking
-        IdentityAbstraction &lt;.. MarkingDefinitionAbstraction : objectMarking
+
+          IdentityAbstraction ..&gt; MarkingDefinitionAbstraction : objectMarking
+
       IdentityAbstraction : specVersion
-        IdentityAbstraction &lt;.. string : specVersion
+
+          IdentityAbstraction ..&gt; string : specVersion
+
       IdentityAbstraction : tag
-        IdentityAbstraction &lt;.. string : tag
+
+          IdentityAbstraction ..&gt; string : tag
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
@@ -253,37 +273,37 @@
 <tbody>
 <tr>
 <td><a href="../createdBy/">createdBy</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The identity that created a characterization of a concept</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>A description of a particular concept characterization</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../externalReference/">externalReference</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>Specifies a reference to a resource outside of the UCO</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../hasFacet/">hasFacet</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>Further sets of properties characterizing a concept based on the particular c...</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../modifiedTime/">modifiedTime</a></td>
-<td>0..* <br/> <a href="../Datetime/">Datetime</a></td>
+<td>0..* <br/> <a href="xsd:dateTime">xsd:dateTime</a></td>
 <td>Specifies the time that this particular version of the object was modified</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The name of a particular concept characterization</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
@@ -295,19 +315,19 @@
 </tr>
 <tr>
 <td><a href="../objectCreatedTime/">objectCreatedTime</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>0..1 <br/> <a href="xsd:dateTime">xsd:dateTime</a></td>
 <td>The time at which a characterization of a concept is created</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../specVersion/">specVersion</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="xsd:string">xsd:string</a></td>
 <td>The version of UCO ontology or subontology specification used to characterize...</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
 <tr>
 <td><a href="../tag/">tag</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>0..* <br/> <a href="xsd:string">xsd:string</a></td>
 <td>A generic tag/label</td>
 <td><a href="../UcoObject/">UcoObject</a></td>
 </tr>
@@ -419,7 +439,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/lmodel/uco-types</li>
+<li>from schema: https://w3id.org/lmodel/uco-core</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -432,11 +452,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>types:IdentityAbstraction</td>
+<td>core:IdentityAbstraction</td>
 </tr>
 <tr>
 <td>native</td>
-<td>types:IdentityAbstraction</td>
+<td>core:IdentityAbstraction</td>
 </tr>
 <tr>
 <td>related</td>
@@ -453,10 +473,9 @@ description: An identity abstraction is a grouping of identifying characteristic
   unique to an individual or organization. This class is an ontological structural
   abstraction for this concept. Implementations of this concept should utilize the
   identity:Identity class.
-from_schema: https://w3id.org/lmodel/uco-types
+from_schema: https://w3id.org/lmodel/uco-core
 related_mappings:
 - NCIT:C68806
-rank: 1000
 is_a: UcoObject
 
 </code></pre>
@@ -468,144 +487,41 @@ description: An identity abstraction is a grouping of identifying characteristic
   unique to an individual or organization. This class is an ontological structural
   abstraction for this concept. Implementations of this concept should utilize the
   identity:Identity class.
-from_schema: https://w3id.org/lmodel/uco-types
+from_schema: https://w3id.org/lmodel/uco-core
 related_mappings:
 - NCIT:C68806
-rank: 1000
 is_a: UcoObject
 attributes:
   createdBy:
     name: createdBy
     description: The identity that created a characterization of a concept.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     domain: IdentityAbstraction
     alias: createdBy
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     maximum_cardinality: 0
   description:
     name: description
     description: A description of a particular concept characterization.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: description
     owner: IdentityAbstraction
     domain_of:
     - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     range: string
   externalReference:
     name: externalReference
     description: Specifies a reference to a resource outside of the UCO.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     domain: ExternalReference
     multivalued: true
     alias: externalReference
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     required: false
@@ -615,46 +531,12 @@ attributes:
     description: Further sets of properties characterizing a concept based on the
       particular context of the class and of the particular instance of the concept
       being characterized.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     domain: Facet
     multivalued: true
     alias: hasFacet
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
   modifiedTime:
@@ -666,88 +548,20 @@ attributes:
       property. Object creators MUST update the modified property when creating a
       new version of an object. The modified timestamp MUST be precise to the nearest
       millisecond (exactly three digits after the decimal place in seconds).
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: modifiedTime
     owner: IdentityAbstraction
     domain_of:
     - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     range: datetime
   name:
     name: name
     description: The name of a particular concept characterization.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: name
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     maximum_cardinality: 1
@@ -755,45 +569,11 @@ attributes:
     name: objectMarking
     description: Marking definitions to be applied to a particular concept characterization
       in its entirety.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: objectMarking
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: MarkingDefinitionAbstraction
   objectCreatedTime:
@@ -801,44 +581,10 @@ attributes:
     description: The time at which a characterization of a concept is created. This
       time pertains to the time of creating the record object, and is not an intrinsic
       characteristic of the concept.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: objectCreatedTime
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: datetime
     maximum_cardinality: 1
@@ -846,89 +592,21 @@ attributes:
     name: specVersion
     description: The version of UCO ontology or subontology specification used to
       characterize a concept.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     alias: specVersion
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
     maximum_cardinality: 1
   tag:
     name: tag
     description: A generic tag/label.
-    from_schema: https://w3id.org/lmodel/uco-types
-    rank: 1000
+    from_schema: https://w3id.org/lmodel/uco-core
     multivalued: true
     alias: tag
     owner: IdentityAbstraction
     domain_of:
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
-    - UcoObject
     - UcoObject
     range: string
 
@@ -958,6 +636,6 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.fc8c2696.min.js"></script>
+<script src="../assets/javascripts/bundle.efa0ade1.min.js"></script>
 <script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>
