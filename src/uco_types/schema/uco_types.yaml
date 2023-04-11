@@ -1,0 +1,336 @@
+---
+id: https://w3id.org/lmodel/uco-types
+name: uco-types
+title: UCO Types
+description: >-
+license: https://www.apache.org/licenses/LICENSE-2.0
+
+version: 1.1.0  # sync with primary git repo release tag
+
+## ------------
+##
+## PREFIXES
+## ------------
+# CURIE namespaces (prefixes/base URI's) mappings of prefixes used in the body of
+# the UCOLink Model specification are resolved using a specific precedence order,
+# for use in the generation of the UCOLink Model context.jsonld mappings to
+# namespaces. Any prefixes encountered in the UCOLink Model but not resolved by
+# the following precedence sources, are anonymously declared by linkml as
+# http://example.org/UNKNOWN/ rooted base URI's which should ideally be repaired
+# in one of the precedence lists.
+#
+# 1. The following 'prefixes:' delimited list has first precedence in resolution.
+
+prefixes:
+  co: 'http://purl.org/co/'
+  edam.data: 'http://edamontology.org/data_'
+  GSSO: 'http://purl.obolibrary.org/obo/GSSO_'
+  linkml: 'https://w3id.org/linkml/'
+  REPR: 'https://w3id.org/reproduceme#'     # reproduce me
+  SIO: 'http://identifiers.org/sio/'
+  sumo: 'https://w3id.org/sumo/kb/'
+
+  types: 'https://w3id.org/lmodel/uco-types/'
+  schema_uco_vocabulary: 'https://w3id.org/lmodel/uco-vocabulary/schema/'
+  schema_uco_core: 'https://w3id.org/lmodel/uco-core/schema/'
+  schema_collections: 'https://w3id.org/lmodel/collections/schema/'
+
+default_prefix: types
+default_range: string
+
+## ------------
+## SUBSETS
+## ------------
+subsets: {}
+
+## ------------
+## TYPES
+## ------------
+imports:
+  - linkml:types
+  - schema_collections:collections
+  - schema_uco_core:uco_core
+  - schema_uco_vocabulary:uco_vocabulary
+
+types: {}
+
+## ------------
+## ENUMS
+## ------------
+enums: {}
+
+## ------------
+## SLOTS
+## ------------
+slots:
+
+  list:
+    range: List
+
+  listItem:
+    range: ListItem
+
+  identifier:
+    description: >-
+      An identifier is a string conformant to the specified UUID-based format for UCO object identifiers.
+    exact_mappings:
+      - dcterms:identifier
+      - edam.data:0842  # identifier
+      - EFO:id
+      - REPR:id
+      - schema:identifier
+      - SIO:000115          # identifier
+      - sumo:Identifier
+      - sumo:identityElement
+    narrow_mappings:
+      - dcterms:eventID
+      - dcterms:parentEventID
+      - dcterms:identificationID
+      - dcterms:systemID
+      # CSO:bicm-id
+      - SIO:000672    # is identifier for
+      - SIO:000674    # is unique identifier for
+      - ERO:0000044   # has inventory number
+      - ERO:0000480   # has_url
+      - NCIT:C94069   # resource provider identifier
+      - REPR:doi
+      - SIO:000328    # positional identifier
+      - SIO:000729    # record identifier
+      - schema:productID
+      - schema:taxID
+      - sumo:AccountID
+      - sumo:AlphaIDString
+      - sumo:AlphaNumericIDString
+      - sumo:AgentID
+      - sumo:CountryID
+      - sumo:CustomerID
+      - sumo:currencyCode
+      - sumo:DistrictID
+
+  nativeFormatString:
+    description: >-
+      "Specifies data in its native format of some external language. The data may be encoded in Base64 per [RFC4648]. Data encoded in Base64 must be denoted as such using the encoded property."
+    related_mappings:
+      - SWO:0000741   # is encoded by
+
+  structuredText:
+    description: >-
+      "Expresses string-based data in some information structuring format (e.g., HTML5)."
+    broad_mappings:
+      - sumo:DigitalData
+      - wikidata:Q128751  # source code
+    narrow_mappings:
+      - wikidata:Q2053  # html5
+      - wikidata:Q2115  # xml
+      - wikidata:Q281876  # yaml
+      - wikidata:Q1193600  # markdown
+      - wikidata:Q1141412  # inifile
+      - wikidata:Q1645574  # protobuf
+      - wikidata:Q2063  # json
+      - wikidata:Q2005  # javascript
+
+  entry:
+    description: >-
+      "A dictionary entry."
+    range: DictionaryEntry
+
+  hashMethod:
+    description: >-
+      "A particular cryptographic hashing method (e.g., MD5)."
+    union_of:
+      - HashNameVocab
+      - string type
+
+  hashValue:
+    description: >-
+      "A cryptographic hash value."
+    range: hex binary type
+
+  key:
+    description: >-
+      "A key property of a single dictionary entry."
+    broad_mappings:
+      - wikidata:Q4818718  # attribute-value pair
+    exact_mappings:
+      - wikidata:Q937228  # property
+    narrow_mappings:
+      - wikidata:Q934729  # primary key
+
+  threadNextItem:
+    is_a: threadSuccessor
+    subproperty_of: threadSuccessor
+    description: >-
+      "The link to a next item in a thread."
+    range: ThreadItem
+    see_also: "co:nextItem"
+
+  threadOriginItem:
+    is_a: item
+    subproperty_of: item
+    todos:
+      - instance rules for threadPreviousItem=0
+    description: >-
+      "A link to an item of the thread known to have no predecessor."
+    domain: Thread
+    range: ThreadItem
+    mixin: true
+    disjoint_with: threadPreviousItem
+    see_also: "co:firstItem"
+
+  threadPredecessor:
+    transitive: true
+    description: >-
+      "The link to the preceding item in a thread."
+    domain: ThreadItem
+    range: ThreadItem
+    see_also: "co:precededBy"
+    inverse: threadSuccessor
+
+  threadPreviousItem:
+    is_a: threadPredecessor
+    subproperty_of: threadPredecessor
+    description: >-
+      "A direct link to a previous item in a thread."
+    see_also: "co:previousItem"
+    range: ThreadItem
+    inverse: threadNextItem
+    mixin: true
+
+  threadSuccessor:
+    transitive: true
+    description: >-
+      "A link to a following item in a thread."
+    domain: ThreadItem
+    range: ThreadItem
+    see_also: "co:followedBy"
+
+  threadTerminalItem:
+    is_a: item
+    subproperty_of: item
+    description: >-
+      "A link to an item of the thread known to have no successor."
+    domain: Thread
+    range: ThreadItem
+    mixin: true
+    disjoint_with: threadNextItem
+    todos:
+      - instance rules for threadPreviousItem=0
+    see_also: "co:lastItem"
+
+  _value:
+    description: >-
+      "A specific property value."
+
+
+## ------------
+## CLASSES
+## ------------
+classes:
+
+  ControlledDictionary:
+    is_a: Dictionary
+    description: >-
+      "A controlled dictionary is a list of (term/key, value) pairs where each term/key exists no more than once and is constrained to an explicitly defined set of values."
+    slots:
+      - entry
+    slot_usage:
+      entry:
+        multivalued: true
+
+  ControlledDictionaryEntry:
+    is_a: DictionaryEntry
+    description: >-
+      "A controlled dictionary entry is a single (term/key, value) pair where the term/key is constrained to an explicitly defined set of values."
+
+  Dictionary:
+    is_a: UcoInherentCharacterizationThing
+    description: >-
+      "A dictionary is list of (term/key, value) pairs with each term/key existing no more than once."
+    slots:
+      - entry
+    slot_usage:
+      entry:
+        multivalued: true
+        required: true
+        minimum_cardinality: 1
+    broad_mappings:
+      - wikidata:Q23622
+      - GSSO:D016437
+      - NCIT:C49461
+      - sumo:Dictionary
+    exact_mappings:
+      - wikidata:Q80585  # associative array
+      - wikidata:Q20706915  # key-value store
+
+  DictionaryEntry:
+    is_a: UcoInherentCharacterizationThing
+    description: >-
+      "A dictionary entry is a single (term/key, value) pair."
+    slots:
+      - key
+      - value
+    slot_usage:
+      key:
+        required: true
+        maximum_cardinality: 1
+        minimum_cardinality: 1
+      value:
+        required: true
+        maximum_cardinality: 1
+        minimum_cardinality: 1
+    exact_mappings:
+      - wikidata:Q4818718  # key-value pair
+
+  Hash:
+    is_a: UcoInherentCharacterizationThing
+    description: >-
+      "A hash is a grouping of characteristics unique to the result of applying a mathematical algorithm that maps data of arbitrary size to a bit string (the 'hash') and is a one-way function, that is, a function which is practically infeasible to invert. This is commonly used for integrity checking of data. [based on https://en.wikipedia.org/wiki/Cryptographic_hash_function]"
+    slots:
+      - hashValue
+      - hashMethod
+    slot_usage:
+      hashValue:
+        required: true
+        maximum_cardinality: 1
+        minimum_cardinality: 1
+      hashMethod:
+        required: true
+        maximum_cardinality: 1
+        minimum_cardinality: 1
+        any_of:
+          - range: HashNameEnum
+          - range: string type
+    exact_mappings:
+      - NCIT:C68725
+      - wikidata:Q477202
+
+  Thread:
+    is_a: Bag
+    mixins:
+      - UcoThing
+    description: >-
+      "A semi-ordered array of items, that can be present in multiple copies.  Implemetation of a UCO Thread is similar to a Collections Ontology List, except a Thread may fork and merge - that is, one of its members may have two or more direct successors, and two or more direct predecessors."
+    disjoint_with: List
+    slots:
+      - item
+    slot_usage:
+      item:
+        domain: ThreadItem
+        range: ThreadItem
+        multivalued: true
+
+  ThreadItem:
+    class_uri: collections:CoItem
+    mixins:
+      - UcoThing
+    description: >-
+      "A ThreadItem is a member of a thread."
+    disjoint_with: listItem
+    slots:
+      - itemContent
+    slot_usage:
+      itemContent:
+        multivalued: true
+        domain: UcoObject
+
+...

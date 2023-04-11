@@ -1,0 +1,976 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix types: <https://w3id.org/lmodel/uco-types/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<collections:Collection> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A group of objects that can be considered as a whole." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The number of item belonging to a collection." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <collections:size> ],
+        [ sh:class <collections:Thing> ;
+            sh:description "The link to the members of a collection" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:element> ] ;
+    sh:targetClass <collections:Collection> .
+
+<collections:List> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An ordered array of items, that can be present in multiple copies" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <collections:Thing> ;
+            sh:description "The link to the members of a collection" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path <collections:element> ],
+        [ sh:class <collections:ListItem> ;
+            sh:description "The link to the last item of the list." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path <collections:lastItem> ],
+        [ sh:class <collections:ListItem> ;
+            sh:description "The link to the first item of the list." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 2 ;
+            sh:path <collections:firstItem> ],
+        [ sh:description "The number of item belonging to a collection." ;
+            sh:maxCount 1 ;
+            sh:order 4 ;
+            sh:path <collections:size> ],
+        [ sh:class <collections:ListItem> ;
+            sh:description "The link to every item of the bag" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:item> ] ;
+    sh:targetClass <collections:List> .
+
+<collections:Set> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A collection that cannot contain duplicate elements." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <collections:Thing> ;
+            sh:description "The link to the members of a collection" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:element> ],
+        [ sh:description "The number of item belonging to a collection." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <collections:size> ] ;
+    sh:targetClass <collections:Set> .
+
+<core:Annotation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An annotation is an assertion made in relation to one or more objects." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 11 ;
+            sh:path <core:tag> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 5 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 6 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 4 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "A textual statement of an assertion." ;
+            sh:order 1 ;
+            sh:path <core:statement> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 8 ;
+            sh:path <core:objectMarking> ],
+        [ sh:class <core:UcoObject> ;
+            sh:description "Specifies one or more UcoObjects." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <core:object> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 3 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <rdfs:label> ] ;
+    sh:targetClass <core:Annotation> .
+
+<core:Assertion> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An assertion is a statement declared to be true." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A generic tag/label." ;
+            sh:order 10 ;
+            sh:path <core:tag> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 4 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "A textual statement of an assertion." ;
+            sh:order 0 ;
+            sh:path <core:statement> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:createdBy> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 3 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 5 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass <core:Assertion> .
+
+<core:AttributedName> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An attributed name is a name of an entity issued by some attributed naming authority." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 3 ;
+            sh:path <core:externalReference> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 4 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "Specifies the naming authority that issued the name of the entity." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:namingAuthority> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 10 ;
+            sh:path <core:tag> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 5 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:createdBy> ] ;
+    sh:targetClass <core:AttributedName> .
+
+<core:Bundle> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A bundle is a container for a grouping of UCO content with no presumption of shared context." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 10 ;
+            sh:path <core:tag> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:createdBy> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 3 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 4 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 5 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:class <core:UcoObject> ;
+            sh:description "Specifies one or more UcoObjects." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <core:object> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:specVersion> ] ;
+    sh:targetClass <core:Bundle> .
+
+<core:Compilation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A compilation is a grouping of things." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 3 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 4 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 9 ;
+            sh:path <core:tag> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 2 ;
+            sh:path <core:externalReference> ] ;
+    sh:targetClass <core:Compilation> .
+
+<core:ConfidenceFacet> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A confidence is a grouping of characteristics unique to an asserted level of certainty in the accuracy of some information." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "An asserted level of certainty in the accuracy of some information." ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 100 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:order 0 ;
+            sh:path <core:confidence> ] ;
+    sh:targetClass <core:ConfidenceFacet> .
+
+<core:ContextualCompilation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A contextual compilation is a grouping of things sharing some context (e.g., a set of network connections observed on a given day, all accounts associated with a given person)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 10 ;
+            sh:path <core:tag> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 3 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:class <core:UcoObject> ;
+            sh:description "Specifies one or more UcoObjects." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <core:object> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 5 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 4 ;
+            sh:path <core:hasFacet> ] ;
+    sh:targetClass <core:ContextualCompilation> .
+
+<core:ControlledVocabulary> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A controlled vocabulary is an explicitly constrained set of string values." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 6 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "The name of an explicitly constrained set of string values." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:constrainingVocabularyName> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "A reference to a specification for an explicitly constrained set of string values. The specification may be unstructured (e.g., web page listing string values) or structured (e.g. RDF/OWL enumeration)." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:constrainingVocabularyReference> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 7 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "A string value." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 2 ;
+            sh:path <core:value> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 4 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <rdfs:label> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 9 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 5 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 12 ;
+            sh:path <core:tag> ] ;
+    sh:targetClass <core:ControlledVocabulary> .
+
+<core:EnclosingCompilation> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An enclosing compilation is a container for a grouping of things." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 5 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 3 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 2 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:specVersion> ],
+        [ sh:class <core:UcoObject> ;
+            sh:description "Specifies one or more UcoObjects." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <core:object> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 10 ;
+            sh:path <core:tag> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 4 ;
+            sh:path <core:hasFacet> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 7 ;
+            sh:path <core:objectMarking> ] ;
+    sh:targetClass <core:EnclosingCompilation> .
+
+<core:ExternalReference> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Characteristics of a reference to a resource outside of the UCO." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A description of the context relevant to the definition of a particular external reference identifier." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <core:definingContext> ],
+        [ sh:description "An identifier for some information defined external to the UCO context." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <core:externalIdentifier> ],
+        [ sh:description "A URL for some information defined external to the UCO context." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:referenceURL> ] ;
+    sh:targetClass <core:ExternalReference> .
+
+<core:Facet> a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "A facet is a grouping of characteristics singularly unique to a particular inherent aspect of a UCO domain object." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <core:Facet> .
+
+<core:Grouping> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A grouping is a compilation of referenced UCO content with a shared context." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 11 ;
+            sh:path <core:tag> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 5 ;
+            sh:path <core:hasFacet> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 8 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "A description of particular contextual affinity." ;
+            sh:order 0 ;
+            sh:path <core:context> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 10 ;
+            sh:path <core:specVersion> ],
+        [ sh:class <core:UcoObject> ;
+            sh:description "Specifies one or more UcoObjects." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path <core:object> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 9 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 6 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 4 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 3 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <rdfs:label> ] ;
+    sh:targetClass <core:Grouping> .
+
+<core:IdentityAbstraction> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An identity abstraction is a grouping of identifying characteristics unique to an individual or organization. This class is an ontological structural abstraction for this concept. Implementations of this concept should utilize the identity:Identity class." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 3 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 9 ;
+            sh:path <core:tag> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 4 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 2 ;
+            sh:path <core:externalReference> ] ;
+    sh:targetClass <core:IdentityAbstraction> .
+
+<core:Item> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An item is a distinct article or unit." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 3 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 9 ;
+            sh:path <core:tag> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 4 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 2 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass <core:Item> .
+
+<core:ModusOperandi> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A modus operandi is a particular method of operation (how a particular entity behaves or the resources they use)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 2 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 4 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 3 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 9 ;
+            sh:path <core:tag> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ] ;
+    sh:targetClass <core:ModusOperandi> .
+
+<core:Relationship> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A relationship is a grouping of characteristics unique to an assertion that one or more objects are related to another object in some way." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <core:UcoObject> ;
+            sh:description "The terminating node of a specified relationship." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 5 ;
+            sh:path <core:target> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 13 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "The initial time of a time range." ;
+            sh:order 4 ;
+            sh:path <core:startTime> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 14 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "A characterization of the nature of a relationship between objects." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <core:kindOfRelationship> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 11 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 15 ;
+            sh:path <core:tag> ],
+        [ sh:description "The ending time of a time range." ;
+            sh:order 0 ;
+            sh:path <core:endTime> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 10 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "A specification whether or not a relationship assertion is limited to the context FROM a source object(s) TO a target object." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path <core:isDirectional> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 8 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 7 ;
+            sh:path <dcterms:description> ],
+        [ sh:class <core:UcoObject> ;
+            sh:description "The originating node of a specified relationship." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 3 ;
+            sh:path <core:source> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 6 ;
+            sh:path <core:createdBy> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 12 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 9 ;
+            sh:path <core:hasFacet> ] ;
+    sh:targetClass <core:Relationship> .
+
+<core:UcoInherentCharacterizationThing> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A UCO inherent characterization thing is a grouping of characteristics unique to a particular inherent aspect of a UCO domain object." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <core:UcoInherentCharacterizationThing> .
+
+<core:UcoThing> a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "UcoThing is the top-level class within UCO." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <core:UcoThing> .
+
+types:ControlledDictionary a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A controlled dictionary is a list of (term/key, value) pairs where each term/key exists no more than once and is constrained to an explicitly defined set of values.\"" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class types:DictionaryEntry ;
+            sh:description "\"A dictionary entry.\"" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path types:entry ] ;
+    sh:targetClass types:ControlledDictionary .
+
+types:ControlledDictionaryEntry a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A controlled dictionary entry is a single (term/key, value) pair where the term/key is constrained to an explicitly defined set of values.\"" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "\"A key property of a single dictionary entry.\"" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path types:key ],
+        [ sh:description "A string value." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path <core:value> ] ;
+    sh:targetClass types:ControlledDictionaryEntry .
+
+types:Dictionary a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A dictionary is list of (term/key, value) pairs with each term/key existing no more than once.\"" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class types:DictionaryEntry ;
+            sh:description "\"A dictionary entry.\"" ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path types:entry ] ;
+    sh:targetClass types:Dictionary .
+
+types:Hash a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A hash is a grouping of characteristics unique to the result of applying a mathematical algorithm that maps data of arbitrary size to a bit string (the 'hash') and is a one-way function, that is, a function which is practically infeasible to invert. This is commonly used for integrity checking of data. [based on https://en.wikipedia.org/wiki/Cryptographic_hash_function]\"" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "\"A cryptographic hash value.\"" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path types:hashValue ],
+        [ sh:description "\"A particular cryptographic hashing method (e.g., MD5).\"" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path types:hashMethod ] ;
+    sh:targetClass types:Hash .
+
+types:Thread a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A semi-ordered array of items, that can be present in multiple copies.  Implemetation of a UCO Thread is similar to a Collections Ontology List, except a Thread may fork and merge - that is, one of its members may have two or more direct successors, and two or more direct predecessors.\"" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class <collections:CoItem> ;
+            sh:description "The link to every item of the bag" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:item> ],
+        [ sh:description "The number of item belonging to a collection." ;
+            sh:maxCount 1 ;
+            sh:order 2 ;
+            sh:path <collections:size> ],
+        [ sh:class <collections:Thing> ;
+            sh:description "The link to the members of a collection" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path <collections:element> ] ;
+    sh:targetClass types:Thread .
+
+<collections:Bag> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Collection that can have a number of copies of each object" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "The number of item belonging to a collection." ;
+            sh:maxCount 1 ;
+            sh:order 1 ;
+            sh:path <collections:size> ],
+        [ sh:class <collections:Thing> ;
+            sh:description "The link to the members of a collection" ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:element> ] ;
+    sh:targetClass <collections:Bag> .
+
+<collections:CoItem> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A ThreadItem is a member of a thread.\"",
+        "Element belonging to a bag" ;
+    sh:ignoredProperties ( rdf:type ),
+        ( rdf:type ) ;
+    sh:property [ sh:class <collections:CoItem> ;
+            sh:description "The link to the actual resource to which the item refers." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:itemContent> ],
+        [ sh:class <collections:Bag> ;
+            sh:description "The link to a bag in which the item is member." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 0 ;
+            sh:path <collections:itemOf> ] ;
+    sh:targetClass <collections:CoItem> .
+
+types:DictionaryEntry a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "\"A dictionary entry is a single (term/key, value) pair.\"" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "\"A key property of a single dictionary entry.\"" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path types:key ],
+        [ sh:description "A string value." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 1 ;
+            sh:path <core:value> ] ;
+    sh:targetClass types:DictionaryEntry .
+
+<collections:ListItem> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "element belonging to a list" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A number identifying the position, starting from 1, of a particular list item within a list." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path <collections:_index> ],
+        [ sh:class <collections:Bag> ;
+            sh:description "The link to a bag in which the item is member." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 1 ;
+            sh:path <collections:itemOf> ] ;
+    sh:targetClass <collections:ListItem> .
+
+<collections:Thing> a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass <collections:Thing> .
+
+<core:UcoObject> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A UCO object is a representation of a fundamental concept either directly inherent to the cyber domain or indirectly related to the cyber domain and necessary for contextually characterizing cyber domain concepts and relationships. Within the Unified Cyber Ontology (UCO) structure this is the base class acting as a consistent, unifying and interoperable foundation for all explicit and inter-relatable content objects." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 3 ;
+            sh:path <core:hasFacet> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 9 ;
+            sh:path <core:tag> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 4 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "A human-readable description of an entity" ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 2 ;
+            sh:path <core:externalReference> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:specVersion> ] ;
+    sh:targetClass <core:UcoObject> .
+
+<core:MarkingDefinitionAbstraction> a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A marking definition abstraction is a grouping of characteristics unique to the expression of a specific data marking conveying restrictions, permissions, and other guidance for how marked data can be used and shared. This class is an ontological structural abstraction for this concept. Implementations of this concept should utilize the marking MarkingDefinition class." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A human-readable description of an entity" ;
+            sh:order 1 ;
+            sh:path <dcterms:description> ],
+        [ sh:description "The name of a particular concept characterization." ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path <rdfs:label> ],
+        [ sh:description "Specifies the time that this particular version of the object was modified. The object creator can use the time it deems most appropriate as the time this version of the object was modified. The value of the modified property for a given object version MUST be later than or equal to the value of the created property. Object creators MUST update the modified property when creating a new version of an object. The modified timestamp MUST be precise to the nearest millisecond (exactly three digits after the decimal place in seconds)." ;
+            sh:order 4 ;
+            sh:path <core:modifiedTime> ],
+        [ sh:description "The identity that created a characterization of a concept." ;
+            sh:maxCount 1 ;
+            sh:order 0 ;
+            sh:path <core:createdBy> ],
+        [ sh:description "The version of UCO ontology or subontology specification used to characterize a concept." ;
+            sh:maxCount 1 ;
+            sh:order 8 ;
+            sh:path <core:specVersion> ],
+        [ sh:description "Specifies a reference to a resource outside of the UCO." ;
+            sh:order 2 ;
+            sh:path <core:externalReference> ],
+        [ sh:description "The time at which a characterization of a concept is created. This time pertains to the time of creating the record object, and is not an intrinsic characteristic of the concept." ;
+            sh:maxCount 1 ;
+            sh:order 7 ;
+            sh:path <core:objectCreatedTime> ],
+        [ sh:description "Further sets of properties characterizing a concept based on the particular context of the class and of the particular instance of the concept being characterized." ;
+            sh:order 3 ;
+            sh:path <core:hasFacet> ],
+        [ sh:class <core:MarkingDefinitionAbstraction> ;
+            sh:description "Marking definitions to be applied to a particular concept characterization in its entirety." ;
+            sh:nodeKind sh:BlankNode ;
+            sh:order 6 ;
+            sh:path <core:objectMarking> ],
+        [ sh:description "A generic tag/label." ;
+            sh:order 9 ;
+            sh:path <core:tag> ] ;
+    sh:targetClass <core:MarkingDefinitionAbstraction> .
+
